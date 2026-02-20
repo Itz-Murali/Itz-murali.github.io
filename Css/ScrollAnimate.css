@@ -1,0 +1,171 @@
+
+.animate-on-load, .animate-on-scroll {
+  opacity: 0;
+}
+.animated {
+  opacity: 1;
+}
+
+[data-delay] {
+  animation-delay: var(--delay);
+}
+
+.scroll-animate {
+  opacity: 0;
+  transition: all 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+
+.scroll-animate.show {
+  opacity: 1;
+}
+
+
+.slide-top.show {
+  animation: slideTop 1.8s ease forwards;
+}
+.slide-bottom.show {
+  animation: slideBottom 1.8s ease forwards;
+}
+.slide-left.show {
+  animation: slideLeft 1.8s ease forwards;
+}
+.slide-right.show {
+  animation: slideRight 1.7s ease forwards;
+}
+.fade-zoom.show {
+  animation: fadeInZoom 1.6s ease forwards;
+}
+
+.fade-in.show {
+  animation: fadeIn2 1.9s ease forwards;
+}
+@keyframes fadeIn2 {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes rotateIn {
+  0% { transform: rotate(-90deg); opacity: 0; }
+  100% { transform: rotate(0); opacity: 1; }
+}
+.rotate-in.show {
+  animation: rotateIn 1.8s ease forwards;
+}
+
+@keyframes skewInLeft {
+  0% {
+    transform: skewX(20deg) translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: skewX(0deg) translateX(0);
+    opacity: 1;
+  }
+}
+.skew-in-left.show {
+  animation: skewInLeft 2s ease forwards;
+}
+
+@keyframes stretchIn {
+  0% {
+    transform: scaleX(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+.stretch-in.show {
+  animation: stretchIn 2s ease forwards;
+  transform-origin: left;
+}
+
+@keyframes diagonalSlide {
+  0% {
+    transform: translate(-50px, 50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+.diagonal-slide.show {
+  animation: diagonalSlide 2s ease forwards;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideBottom {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideTop {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInZoom {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes waveIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.wave-in.show {
+  animation: waveIn 1.8s ease-out forwards;
+}
+
