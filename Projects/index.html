@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Murali Portfolio</title>
+  <meta name="description" content="Explore my collection of projects built with passion, creativity, and cutting-edge technologies.">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"> 
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+#gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+}
+
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    
+    .font-display { font-family: 'Inter', system-ui, sans-serif; }
+    .font-body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+
+    
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
+  
+<div id="gradient"></div>
+  <main class="relative z-10 min-h-screen py-8 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      
+
+      
+
+      
+      <div id="header" class="text-center mb-12 opacity-0 translate-y-10 transition-all duration-1000">
+        <h1 class="text-4xl md:text-6xl font-bold text-gradient mb-4 font-display">
+          All Projects
+        </h1>
+        <div class="w-32 h-1 mx-auto bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mb-6"></div>
+        <p class="text-gray-400 font-body max-w-2xl mx-auto leading-relaxed">
+          ✨ These are crafted with passion and creativity. Some are open-source, while others are unique creations built from scratch. 🚀
+        </p>
+      </div>
+
+      
+      <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Projects will be populated by JavaScript -->
+      </div>
+
+      
+      <div class="text-center mt-16 py-8 border-t border-white/10">
+        <p class="text-gray-400 font-body text-lg">
+          🚀 Thank You For Exploring! 🚀
+        </p>
+        <p class="text-sm text-gray-500 mt-2 font-body" id="copyright-year">
+          © 2026 Murali. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    
+    const allProjects = [
+      {
+        title: 'Chiku AI Telegram Bot',
+        description: 'Meet Chiku AI Bot – your smart and feature-packed AI assistant, now available on Telegram! From answering questions to providing useful tools.',
+        tags: ['Typescript', 'HTML', 'CSS', 'JavaScript'],
+        liveUrl: 'https://t.me/ChikuAiBot',
+        sourceUrl: 'https://github.com/itz-Murali/Chiku-Ai',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/l6jaaq.jpg',
+      },
+      {
+        title: 'Elaina AI ChatBot',
+        description: 'Meet Elaina AI — a graceful and intelligent chatbot inspired by the magic of journeys and stories. Designed to understand you like a companion.',
+        tags: ['TypeScript'],
+        liveUrl: 'https://t.me/ElainaOpBot',
+        sourceUrl: 'https://github.com/Itz-Murali/Elaina-Ai',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/bhvr1n.jpg',
+      },
+      {
+        title: 'Journey Of Professor Eevee',
+        description: 'Discover the magical journey of Professor Eevee and his mysterious companion Euvee. Uncover hidden secrets, explore unknown lands, and witness powerful evolutions.',
+        tags: ['HTML', 'CSS', 'JS'],
+        liveUrl: 'https://journey-of-professor-eevee.vercel.app',
+        sourceUrl: 'https://github.com/Itz-Murali/Journey-Of-Professor-Eevee',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/yrzw5t.jpg',
+      },
+      {
+        title: 'Chiku Web Ai',
+        description: 'An Advanced Ai Chatbot With Image generation, text to speech, nekos gallery and lot of more features, Made With Using Vite.',
+        tags: ['Typescript', 'HTML', 'CSS', 'JS'],
+        liveUrl: 'https://Chiku-ai.vercel.app',
+        sourceUrl: 'https://github.com/Itz-Murali/Chiku',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/f3kvmj.jpg',
+      },
+      {
+        title: 'Chiku Music',
+        description: 'A sleek and dynamic Music Player Website built with React and Vite! Enjoy a vibrant modern themed interface where you can play your favorite songs seamlessly.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'Typescript'],
+        liveUrl: 'https://Chiku-music.vercel.app/',
+        sourceUrl: '',
+        isPrivate: true,
+        image: 'https://files.catbox.moe/ntdxvn.jpg',
+      },
+      {
+        title: 'Neko Image Generator',
+        description: 'Your ultimate source for adorable neko images! Instantly generate and explore a collection of cute and stylish neko artwork.',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        liveUrl: 'https://TheMeowClub.github.io/Neko/',
+        sourceUrl: 'https://github.com/TheMeowClub/Neko',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/b8f9zj.jpg',
+      },
+      {
+        title: 'Suzume Movie Fan Page',
+        description: 'A tribute to Makoto Shinkais breathtaking masterpiece, celebrating the beauty, emotion, and adventure of Suzume no Tojimari.',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        liveUrl: 'https://itz-murali.github.io/Suzume/',
+        sourceUrl: 'https://github.com/Itz-Murali/Suzume',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/s8gidm.jpg',
+      },
+      {
+        title: 'Pokedex Website',
+        description: 'Your gateway to the world of Pokémon! Search and explore detailed information about your favorite Pokémon.',
+        tags: ['HTML', 'CSS', 'Typescript'],
+        liveUrl: 'https://trainerdex.vercel.app',
+        sourceUrl: 'https://github.com/Itz-Murali/Pokedex',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/bfmos4.jpg',
+      },
+    ];
+
+    
+    lucide.createIcons();
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    
+      document.getElementById('copyright-year').textContent = `© ${new Date().getFullYear()} Murali. All Rights Reserved.`;
+
+  
+      setTimeout(() => {
+        const header = document.getElementById('header');
+        header.classList.remove('opacity-0', 'translate-y-10');
+        header.classList.add('opacity-100', 'translate-y-0');
+      }, 100);
+
+
+      renderProjects();
+    });
+
+    function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      
+      allProjects.forEach((project, index) => {
+        const projectCard = createProjectCard(project, index);
+        grid.appendChild(projectCard);
+        
+ 
+        setTimeout(() => {
+          projectCard.classList.remove('opacity-0', 'translate-y-10');
+          projectCard.classList.add('opacity-100', 'translate-y-0');
+        }, 200 + index * 80);
+      });
+    }
+
+    function createProjectCard(project, index) {
+      const card = document.createElement('div');
+      card.className = `group glass-card overflow-hidden transition-all duration-500 hover:scale-[1.02] opacity-0 translate-y-10 rounded-2xl`;
+      card.style.transitionDelay = `${index * 50}ms`;
+      
+      card.innerHTML = `
+        
+        <div class="relative h-68 overflow-hidden">
+          <img
+            src="${project.image}"
+            alt="${project.title}"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        </div>
+
+        <div class="p-5">
+          
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-all duration-300 font-display">
+            ${project.title}
+          </h3>
+
+          
+          <p class="text-sm text-gray-400 font-body mb-4 line-clamp-2 leading-relaxed">
+            ${project.description}
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-4">
+            ${project.tags.slice(0, 3).map(tag => `
+              <span class="px-2 py-1 text-xs font-mono rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                ${tag}
+              </span>
+            `).join('')}
+            ${project.tags.length > 3 ? `
+              <span class="px-2 py-1 text-xs font-mono rounded-full bg-gray-800 text-gray-500">
+                +${project.tags.length - 3}
+              </span>
+            ` : ''}
+          </div>
+
+          
+          <div class="flex gap-3">
+            <a
+              href="${project.liveUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-xl
+                     bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500 hover:text-white 
+                     transition-all duration-300 font-mono text-sm hover:shadow-lg"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+              View
+            </a>
+            <a
+              href="${project.isPrivate ? '#' : project.sourceUrl}"
+              target="${project.isPrivate ? '_self' : '_blank'}"
+              rel="noopener noreferrer"
+              class="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-xl
+                     bg-purple-500/20 border border-purple-500/30 text-purple-400 transition-all duration-300 font-mono text-sm
+                     ${project.isPrivate ? 'opacity-50 cursor-not-allowed' : 'hover:bg-purple-500 hover:text-white hover:shadow-lg'}"
+              ${project.isPrivate ? 'onclick="return false;"' : ''}
+            >
+              ${project.isPrivate ? 
+                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>' :
+                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-4m0 0l4 4m-4-4v4m-4-4v4m6-4V6a2 2 0 00-2-2H6a2 2 0 00-2 2v4m12 0v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4"></path></svg>'
+              }
+              ${project.isPrivate ? 'Private' : 'Source'}
+            </a>
+          </div>
+        </div>
+      `;
+      
+      return card;
+    }
+  </script>
+  <script src="Bg.js"></script>
+</body>
+</html>
