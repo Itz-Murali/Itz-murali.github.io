@@ -5,63 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects | Murali Portfolio</title>
   <meta name="description" content="Explore my collection of projects built with passion, creativity, and cutting-edge technologies.">
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"> 
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
-  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'rgb(99 102 241 / <alpha-value>)',
+            secondary: 'rgb(168 85 247 / <alpha-value>)',
+            coral: 'rgb(251 113 133 / <alpha-value>)',
+          },
+        },
+      },
+    };
+  </script>
+
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
   <style>
-    
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+    html { scroll-behavior: smooth; }
+    body { background: #06050f; }
 
-    
-    .glass-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-#gradient {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -3;
-}
+    .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; }
+    .font-body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
 
-    
     .text-gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #818cf8 0%, #a855f7 55%, #fb7185 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    
-    .animated-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
+    .glass-card {
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .colorful-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 1rem;
     }
 
-    
     .line-clamp-2 {
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -69,43 +65,115 @@
       overflow: hidden;
     }
 
-    
-    .font-display { font-family: 'Inter', system-ui, sans-serif; }
-    .font-body { font-family: 'Inter', system-ui, sans-serif; }
-    .font-code { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+    /* ---- animated backdrop ---- */
+    .bg-scene {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      overflow: hidden;
+      background: #06050f;
+    }
+    .bg-scene::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 85%);
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 85%);
+    }
+    .blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(90px);
+      mix-blend-mode: screen;
+      will-change: transform;
+    }
+    .blob-1 { width: 34rem; height: 34rem; top: -9rem; left: -7rem; opacity: .5; background: radial-gradient(circle, #6366f1, transparent 70%); animation: drift-a 24s ease-in-out infinite; }
+    .blob-2 { width: 30rem; height: 30rem; bottom: -10rem; right: -6rem; opacity: .45; background: radial-gradient(circle, #a855f7, transparent 70%); animation: drift-b 28s ease-in-out infinite; }
+    .blob-3 { width: 24rem; height: 24rem; top: 38%; left: 55%; opacity: .3; background: radial-gradient(circle, #fb7185, transparent 70%); animation: drift-c 20s ease-in-out infinite; }
 
-    
-    html {
-      scroll-behavior: smooth;
+    @keyframes drift-a { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(60px, 80px) scale(1.15); } }
+    @keyframes drift-b { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-70px, -50px) scale(1.1); } }
+    @keyframes drift-c { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-40px, 40px) scale(1.2); } }
+
+    a:focus-visible, button:focus-visible, input:focus-visible {
+      outline: 2px solid rgba(129, 140, 248, .8);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, .35); border-radius: 999px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
-  
-<div id="gradient"></div>
+<body class="text-white overflow-x-hidden font-body antialiased">
+
+  <div class="bg-scene" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
   <main class="relative z-10 min-h-screen py-8 px-4 md:px-8">
     <div class="max-w-6xl mx-auto">
-      
 
-      
+      <a href="/" class="inline-flex items-center gap-2 text-gray-400 hover:text-primary transition-colors mb-8 group font-code text-sm w-fit">
+        <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
+        Back to Home
+      </a>
 
-      
-      <div id="header" class="text-center mb-12 opacity-0 translate-y-10 transition-all duration-1000">
+      <div id="header" class="text-center mb-10 opacity-0 translate-y-10 transition-all duration-1000">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 mb-5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-primary animate-pulse"></i>
+          <span class="text-xs font-code text-primary uppercase tracking-wider">My Work</span>
+        </div>
         <h1 class="text-4xl md:text-6xl font-bold text-gradient mb-4 font-display">
           All Projects
         </h1>
-        <div class="w-32 h-1 mx-auto bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mb-6"></div>
+        <div class="w-32 h-1 mx-auto bg-gradient-to-r from-primary via-secondary to-coral rounded-full mb-6"></div>
         <p class="text-gray-400 font-body max-w-2xl mx-auto leading-relaxed">
           ✨ These are crafted with passion and creativity. Some are open-source, while others are unique creations built from scratch. 🚀
         </p>
       </div>
 
-      
+      <div id="stats" class="grid grid-cols-3 gap-3 sm:gap-6 mb-10 max-w-3xl mx-auto opacity-0 translate-y-10 transition-all duration-1000 delay-150"></div>
+
+      <div id="controls" class="mb-8 space-y-4 opacity-0 translate-y-10 transition-all duration-1000 delay-300">
+        <div class="relative max-w-xl mx-auto">
+          <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search projects, tech, or keywords..."
+            class="w-full pl-11 pr-4 py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10
+                   focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/20
+                   text-sm font-body text-white placeholder:text-gray-500 transition-all"
+          />
+        </div>
+        <div id="tag-filters" class="flex flex-wrap gap-2 justify-center"></div>
+      </div>
+
       <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Projects will be populated by JavaScript -->
       </div>
 
-      
+      <div id="empty-state" class="hidden text-center py-20">
+        <i data-lucide="search" class="w-12 h-12 mx-auto text-gray-600 mb-3"></i>
+        <p class="text-gray-400 font-body">No projects match your search.</p>
+      </div>
+
       <div class="text-center mt-16 py-8 border-t border-white/10">
         <p class="text-gray-400 font-body text-lg">
           🚀 Thank You For Exploring! 🚀
@@ -118,8 +186,16 @@
   </main>
 
   <script>
-    
     const allProjects = [
+      {
+        title: 'Sylveon Music Bot',
+        description: 'Turn your Telegram group into a live music room where everyone listens together perfectly synced, smooth, and immersive. Experience a new era of enjoying music with friends in real-time with cool ai agent features',
+        tags: ['Typescript', 'Supabase', 'Ai', 'SQL'],
+        liveUrl: 'https://t.me/SylveonMusicBot',
+        sourceUrl: '',
+        isPrivate: true,
+        image: 'https://files.catbox.moe/r9lawy.jpg',
+      },
       {
         title: 'Chiku AI Telegram Bot',
         description: 'Meet Chiku AI Bot – your smart and feature-packed AI assistant, now available on Telegram! From answering questions to providing useful tools.',
@@ -131,7 +207,7 @@
       },
       {
         title: 'Elaina AI ChatBot',
-        description: 'Meet Elaina AI — a graceful and intelligent chatbot inspired by the magic of journeys and stories. Designed to understand you like a companion.',
+        description: 'Meet Elaina AI, a graceful and intelligent chatbot inspired by the magic of journeys and stories. Designed to understand you like a companion.',
         tags: ['TypeScript'],
         liveUrl: 'https://t.me/ElainaOpBot',
         sourceUrl: 'https://github.com/Itz-Murali/Elaina-Ai',
@@ -166,17 +242,8 @@
         image: 'https://files.catbox.moe/ntdxvn.jpg',
       },
       {
-        title: 'Neko Image Generator',
-        description: 'Your ultimate source for adorable neko images! Instantly generate and explore a collection of cute and stylish neko artwork.',
-        tags: ['HTML', 'CSS', 'JavaScript'],
-        liveUrl: 'https://TheMeowClub.github.io/Neko/',
-        sourceUrl: 'https://github.com/TheMeowClub/Neko',
-        isPrivate: false,
-        image: 'https://files.catbox.moe/b8f9zj.jpg',
-      },
-      {
         title: 'Suzume Movie Fan Page',
-        description: 'A tribute to Makoto Shinkais breathtaking masterpiece, celebrating the beauty, emotion, and adventure of Suzume no Tojimari.',
+        description: "A tribute to Makoto Shinkai's breathtaking masterpiece, celebrating the beauty, emotion, and adventure of Suzume no Tojimari.",
         tags: ['HTML', 'CSS', 'JavaScript'],
         liveUrl: 'https://itz-murali.github.io/Suzume/',
         sourceUrl: 'https://github.com/Itz-Murali/Suzume',
@@ -192,96 +259,286 @@
         isPrivate: false,
         image: 'https://files.catbox.moe/bfmos4.jpg',
       },
+      {
+        title: 'Weather App',
+        description: 'A modern weather platform with accurate, real-time forecasts and a smooth, elegant interface.',
+        tags: ['TypeScript', 'API', 'UI'],
+        liveUrl: 'https://weather-web-anya.vercel.app/',
+        sourceUrl: 'https://github.com/Itz-Anya/Weather-App',
+        isPrivate: false,
+        image: 'https://raw.githubusercontent.com/Itz-Anya/Weather-App/main/public/file_0000000051a882089c60b2276f48972c.jpg',
+      },
+      {
+        title: 'Chiku Tube',
+        description: 'A distraction-free, AI-powered video discovery app with no infinite scroll and no autoplay traps.',
+        tags: ['TypeScript', 'YouTube API'],
+        liveUrl: 'https://chiku-tube.vercel.app',
+        sourceUrl: 'https://github.com/Itz-Anya/Chiku-Tube',
+        isPrivate: false,
+        image: 'https://raw.githubusercontent.com/Itz-Anya/Chiku-Tube/main/public/file_0000000068b4820898879604d111f68f.jpg',
+      },
+      {
+        title: 'Anime Hub',
+        description: 'Browse trending, seasonal and top-rated anime, search the catalog and keep a local watchlist.',
+        tags: ['React', 'TypeScript'],
+        liveUrl: 'https://anya-anime-hub.vercel.app',
+        sourceUrl: 'https://github.com/Itz-Anya/Anime-Hub',
+        isPrivate: false,
+        image: 'https://raw.githubusercontent.com/Itz-Anya/Anime-Hub/main/public/file-00000000c1147207ab7733ed4f6ac96f.jpg',
+      },
+      {
+        title: 'Manga Hub',
+        description: 'A modern manga reader for discovering and reading your favourite manga.',
+        tags: ['TypeScript', 'Reader'],
+        liveUrl: 'https://anya-manga-hub.vercel.app/',
+        sourceUrl: 'https://github.com/Itz-Anya/Manga-Hub',
+        isPrivate: false,
+        image: 'https://anya-file-host.vercel.app/cznc5nha4b',
+      },
+      {
+        title: 'Space Atlas',
+        description: 'A free, open-source atlas of the observable universe, built entirely on the web.',
+        tags: ['Svelte', 'Data Viz'],
+        liveUrl: 'https://spaceatlas.vercel.app/',
+        sourceUrl: 'https://github.com/Itz-Anya/Space-Atlas',
+        isPrivate: false,
+        image: 'https://anya-file-host.vercel.app/xg21f43ybm',
+      },
+      {
+        title: 'Anya File Hosting Web',
+        description: 'A fast, minimal file and image hosting service built on Next.js, Cloudflare D1, and a clean short-link API.',
+        tags: ['TypeScript', 'API', 'Cloudflare'],
+        liveUrl: 'https://anya-file-host.vercel.app/',
+        sourceUrl: '',
+        isPrivate: true,
+        image: 'https://anya-file-host.vercel.app/o42ywwvug1',
+      },
+      {
+        title: 'Anya Music Web',
+        description: 'Premium themed music streaming web app built with Next.js 14, TypeScript, Tailwind CSS, Framer Motion, Zustand, and TanStack Query. Powered by the Saavnx API.',
+        tags: ['TypeScript', 'SaavnxApi'],
+        liveUrl: 'https://anya-music-web.vercel.app/',
+        sourceUrl: '',
+        isPrivate: true,
+        image: 'https://anya-file-host.vercel.app/d2k01s320w',
+      },
+      {
+        title: 'SaavnxApi',
+        description: 'Unofficial JioSaavn REST API. Node.js and Express on the backend, Vite and React on the frontend, bundled for Vercel serverless.',
+        tags: ['TypeScript', 'Next.js'],
+        liveUrl: 'https://saavnx.vercel.app/',
+        sourceUrl: '',
+        isPrivate: true,
+        image: 'https://anya-file-host.vercel.app/84mi4r4xoj',
+      },
+      {
+        title: 'Color Pallet',
+        description: 'A fast, open-source color toolkit for developers and designers. Explore colors, build palettes and gradients, convert formats and check contrast. Runs entirely in your browser.',
+        tags: ['React', 'Tailwindcss', 'Lucide icons'],
+        liveUrl: 'https://devcolors.vercel.app/',
+        sourceUrl: 'https://github.com/Itz-Murali/Color-Pallet',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/66547c.png',
+      },
+      {
+        title: 'Social Downloader',
+        description: 'Social Downloader is a single-page React app built around one idea: one field should be enough. Drop in a YouTube link, an Instagram reel, a Pinterest pin, or just plain search words, and the app detects the platform automatically and resolves the original file: video, audio, or image, with no account, no queue, and no watermark tax.',
+        tags: ['React', 'Vercel', 'Anya Apis'],
+        liveUrl: 'https://social-fetch.vercel.app/',
+        sourceUrl: 'https://github.com/Itz-Murali/Social-Downloader-Web',
+        isPrivate: false,
+        image: 'https://files.catbox.moe/tt4on4.png',
+      },
+      {
+        title: 'Code Quote',
+        description: 'CodeQuote renders a random programming quote as a self-contained SVG card on every request. Drop one image tag into your README and it just works no JavaScript, no database, no account.',
+        tags: ['Javascript', 'Vercel'],
+        liveUrl: 'https://codequote.vercel.app/',
+        sourceUrl: 'https://github.com/Itz-Anya/Code-Quote',
+        isPrivate: false,
+        image: 'https://raw.githubusercontent.com/Itz-Anya/Code-Quote/main/public/og-image.jpg',
+      },
+      {
+        title: 'Github Stats Svg',
+        description: 'GitHub Stats is an open-source SVG card API you can embed anywhere GitHub READMEs, personal sites, portfolios, and more. It fetches live data from the GitHub API, renders it into a beautiful card, and returns a pure SVG you can drop into any Markdown image tag.',
+        tags: ['TypeScript', 'Vercel', 'Github Api'],
+        liveUrl: 'https://anya-github-stats.vercel.app/',
+        sourceUrl: 'https://github.com/Itz-Anya/Github-Stats',
+        isPrivate: false,
+        image: 'https://raw.githubusercontent.com/Itz-Anya/Github-Stats/main/public/file_000000003b20820899cd1557953562e9.jpg',
+      },
     ];
 
-    
-    lucide.createIcons();
+    // Maps a lowercase tag to a brand icon (served via the Simple Icons CDN) or a Lucide icon.
+    const TECH_ICON_MAP = {
+      typescript:     { type: 'brand',  slug: 'typescript',  color: '#3178C6' },
+      javascript:     { type: 'brand',  slug: 'javascript',  color: '#F7DF1E' },
+      html:           { type: 'brand',  slug: 'html5',       color: '#E34F26' },
+      css:            { type: 'brand',  slug: 'css3',        color: '#1572B6' },
+      js:             { type: 'brand',  slug: 'javascript',  color: '#F7DF1E' },
+      react:          { type: 'brand',  slug: 'react',       color: '#61DAFB' },
+      vercel:         { type: 'brand',  slug: 'vercel',      color: '#FFFFFF' },
+      tailwindcss:    { type: 'brand',  slug: 'tailwindcss', color: '#06B6D4' },
+      svelte:         { type: 'brand',  slug: 'svelte',      color: '#FF3E00' },
+      cloudflare:     { type: 'brand',  slug: 'cloudflare',  color: '#F38020' },
+      'next.js':      { type: 'brand',  slug: 'nextdotjs',   color: '#FFFFFF' },
+      github:         { type: 'brand',  slug: 'github',      color: '#FFFFFF' },
+      'github api':   { type: 'brand',  slug: 'github',      color: '#FFFFFF' },
+      supabase:       { type: 'brand',  slug: 'supabase',    color: '#3FCF8E' },
+      'youtube api':  { type: 'brand',  slug: 'youtube',     color: '#FF0000' },
+      sql:            { type: 'lucide', icon: 'database',    color: '#4479A1' },
+      api:            { type: 'lucide', icon: 'webhook',     color: '#a3a3a3' },
+      ai:             { type: 'lucide', icon: 'sparkles',    color: '#f0abfc' },
+      reader:         { type: 'lucide', icon: 'book-open',   color: '#a3a3a3' },
+      'data viz':     { type: 'lucide', icon: 'bar-chart-3', color: '#a3a3a3' },
+      ui:             { type: 'lucide', icon: 'palette',     color: '#a3a3a3' },
+      'lucide icons': { type: 'lucide', icon: 'palette',     color: '#a3a3a3' },
+      'anya apis':    { type: 'lucide', icon: 'server',      color: '#a3a3a3' },
+      saavnxapi:      { type: 'lucide', icon: 'music',       color: '#1ED760' },
+    };
 
+    // A nicer, deduplicated label for tags whose source casing is inconsistent (e.g. "Typescript" vs "TypeScript").
+    const TAG_LABELS = {
+      typescript: 'TypeScript', javascript: 'JavaScript', html: 'HTML', css: 'CSS', js: 'JS',
+      react: 'React', vercel: 'Vercel', tailwindcss: 'Tailwind CSS', svelte: 'Svelte',
+      cloudflare: 'Cloudflare', 'next.js': 'Next.js', github: 'GitHub', 'github api': 'GitHub API',
+      supabase: 'Supabase', 'youtube api': 'YouTube API', sql: 'SQL', api: 'API', ai: 'AI',
+      reader: 'Reader', 'data viz': 'Data Viz', ui: 'UI', 'lucide icons': 'Lucide Icons',
+      'anya apis': 'Anya APIs', saavnxapi: 'SaavnxAPI',
+    };
 
-    document.addEventListener('DOMContentLoaded', function() {
-    
-      document.getElementById('copyright-year').textContent = `© ${new Date().getFullYear()} Murali. All Rights Reserved.`;
+    function getTechIcon(tag) {
+      return TECH_ICON_MAP[tag.trim().toLowerCase()] ?? { type: 'lucide', icon: 'code-2', color: '#a3a3a3' };
+    }
 
-  
-      setTimeout(() => {
-        const header = document.getElementById('header');
-        header.classList.remove('opacity-0', 'translate-y-10');
-        header.classList.add('opacity-100', 'translate-y-0');
-      }, 100);
+    function getTagLabel(tag) {
+      return TAG_LABELS[tag.trim().toLowerCase()] ?? tag;
+    }
 
+    function techIconHTML(tag, size) {
+      const t = getTechIcon(tag);
+      if (t.type === 'brand') {
+        return `<img src="https://cdn.simpleicons.org/${t.slug}/${t.color.replace('#', '')}" alt="" class="shrink-0" style="width:${size}px;height:${size}px" />`;
+      }
+      return `<i data-lucide="${t.icon}" class="shrink-0" style="width:${size}px;height:${size}px;color:${t.color}"></i>`;
+    }
 
-      renderProjects();
-    });
+    let search = '';
+    let activeTag = 'All';
 
-    function renderProjects() {
-      const grid = document.getElementById('projects-grid');
-      
-      allProjects.forEach((project, index) => {
-        const projectCard = createProjectCard(project, index);
-        grid.appendChild(projectCard);
-        
- 
-        setTimeout(() => {
-          projectCard.classList.remove('opacity-0', 'translate-y-10');
-          projectCard.classList.add('opacity-100', 'translate-y-0');
-        }, 200 + index * 80);
+    function getAllTags() {
+      const seen = new Map();
+      allProjects.forEach((p) => p.tags.forEach((t) => {
+        const key = t.trim().toLowerCase();
+        if (!seen.has(key)) seen.set(key, getTagLabel(t));
+      }));
+      return ['All', ...Array.from(seen.values()).sort((a, b) => a.localeCompare(b))];
+    }
+
+    function getFiltered() {
+      const q = search.trim().toLowerCase();
+      return allProjects.filter((p) => {
+        const matchesTag = activeTag === 'All' || p.tags.some((t) => getTagLabel(t) === activeTag);
+        const matchesSearch = !q
+          || p.title.toLowerCase().includes(q)
+          || p.description.toLowerCase().includes(q)
+          || p.tags.some((t) => t.toLowerCase().includes(q));
+        return matchesTag && matchesSearch;
       });
+    }
+
+    function renderStats() {
+      const stats = [
+        { icon: 'rocket', label: 'Total Projects', value: allProjects.length, color: 'text-primary' },
+        { icon: 'code-2', label: 'Open Source', value: allProjects.filter((p) => !p.isPrivate).length, color: 'text-secondary' },
+        { icon: 'sparkles', label: 'Live Now', value: allProjects.length, color: 'text-coral' },
+      ];
+      document.getElementById('stats').innerHTML = stats.map((s) => `
+        <div class="colorful-card p-3 sm:p-5 text-center group hover:scale-105 transition-transform duration-300">
+          <i data-lucide="${s.icon}" class="w-5 h-5 sm:w-7 sm:h-7 mx-auto mb-2 ${s.color} group-hover:scale-110 transition-transform"></i>
+          <div class="text-2xl sm:text-3xl font-display font-bold text-gradient">${s.value}</div>
+          <div class="text-[10px] sm:text-xs text-gray-500 font-code uppercase tracking-wider mt-1">${s.label}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderTagFilters() {
+      const wrap = document.getElementById('tag-filters');
+      const tags = getAllTags();
+      wrap.innerHTML = tags.map((tag) => {
+        const active = tag === activeTag;
+        const icon = tag !== 'All' ? techIconHTML(tag, 12) : '';
+        return `
+          <button data-tag="${tag}" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-code rounded-full border transition-all ${
+            active
+              ? 'bg-gradient-to-r from-primary to-secondary text-white border-transparent shadow-lg scale-105'
+              : 'bg-white/5 border-white/10 text-gray-400 hover:border-primary/40 hover:text-primary'
+          }">${icon}${tag}</button>`;
+      }).join('');
+
+      wrap.querySelectorAll('button[data-tag]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeTag = btn.dataset.tag;
+          renderTagFilters();
+          renderProjects();
+        });
+      });
+
+      if (window.lucide) lucide.createIcons();
     }
 
     function createProjectCard(project, index) {
       const card = document.createElement('div');
-      card.className = `group glass-card overflow-hidden transition-all duration-500 hover:scale-[1.02] opacity-0 translate-y-10 rounded-2xl`;
-      card.style.transitionDelay = `${index * 50}ms`;
-      
+      card.className = 'group glass-card overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/20 opacity-0 translate-y-10 rounded-2xl';
+      card.style.transitionDelay = `${Math.min(index * 50, 400)}ms`;
+
+      const visibleTags = project.tags.slice(0, 3);
+      const extra = project.tags.length - 3;
+
       card.innerHTML = `
-        
-        <div class="relative h-68 overflow-hidden">
+        <div class="relative h-52 overflow-hidden">
           <img
             src="${project.image}"
             alt="${project.title}"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          ${project.isPrivate ? `
+            <div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10">
+              <i data-lucide="lock" style="width:10px;height:10px" class="text-coral"></i>
+              <span class="text-[10px] font-code text-coral uppercase">Private</span>
+            </div>` : ''}
         </div>
 
         <div class="p-5">
-          
-          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-all duration-300 font-display">
+          <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300 font-display">
             ${project.title}
           </h3>
 
-          
           <p class="text-sm text-gray-400 font-body mb-4 line-clamp-2 leading-relaxed">
             ${project.description}
           </p>
 
           <div class="flex flex-wrap gap-2 mb-4">
-            ${project.tags.slice(0, 3).map(tag => `
-              <span class="px-2 py-1 text-xs font-mono rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                ${tag}
+            ${visibleTags.map((tag) => `
+              <span class="flex items-center gap-1.5 px-2 py-1 text-xs font-code rounded-full bg-primary/10 text-primary border border-primary/20">
+                ${techIconHTML(tag, 12)}${getTagLabel(tag)}
               </span>
             `).join('')}
-            ${project.tags.length > 3 ? `
-              <span class="px-2 py-1 text-xs font-mono rounded-full bg-gray-800 text-gray-500">
-                +${project.tags.length - 3}
-              </span>
-            ` : ''}
+            ${extra > 0 ? `<span class="px-2 py-1 text-xs font-code rounded-full bg-white/5 text-gray-500">+${extra}</span>` : ''}
           </div>
 
-          
           <div class="flex gap-3">
             <a
               href="${project.liveUrl}"
               target="_blank"
               rel="noopener noreferrer"
               class="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-xl
-                     bg-blue-500/20 border border-blue-500/30 text-blue-400 hover:bg-blue-500 hover:text-white 
-                     transition-all duration-300 font-mono text-sm hover:shadow-lg"
+                     bg-primary/20 border border-primary/30 text-primary hover:bg-primary hover:text-white
+                     transition-all duration-300 font-code text-sm hover:shadow-lg"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
               View
             </a>
             <a
@@ -289,23 +546,71 @@
               target="${project.isPrivate ? '_self' : '_blank'}"
               rel="noopener noreferrer"
               class="flex-1 flex items-center justify-center gap-2 py-2 px-4 rounded-xl
-                     bg-purple-500/20 border border-purple-500/30 text-purple-400 transition-all duration-300 font-mono text-sm
-                     ${project.isPrivate ? 'opacity-50 cursor-not-allowed' : 'hover:bg-purple-500 hover:text-white hover:shadow-lg'}"
+                     bg-secondary/20 border border-secondary/30 text-secondary transition-all duration-300 font-code text-sm
+                     ${project.isPrivate ? 'opacity-50 cursor-not-allowed' : 'hover:bg-secondary hover:text-white hover:shadow-lg'}"
               ${project.isPrivate ? 'onclick="return false;"' : ''}
             >
-              ${project.isPrivate ? 
-                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>' :
-                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-4m0 0l4 4m-4-4v4m-4-4v4m6-4V6a2 2 0 00-2-2H6a2 2 0 00-2 2v4m12 0v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4"></path></svg>'
-              }
+              <i data-lucide="${project.isPrivate ? 'lock' : 'github'}" class="w-4 h-4"></i>
               ${project.isPrivate ? 'Private' : 'Source'}
             </a>
           </div>
         </div>
       `;
-      
+
       return card;
     }
+
+    function renderProjects() {
+      const grid = document.getElementById('projects-grid');
+      const emptyState = document.getElementById('empty-state');
+      const filtered = getFiltered();
+
+      grid.innerHTML = '';
+
+      if (filtered.length === 0) {
+        grid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      grid.classList.remove('hidden');
+      emptyState.classList.add('hidden');
+
+      filtered.forEach((project, index) => {
+        const card = createProjectCard(project, index);
+        grid.appendChild(card);
+
+        setTimeout(() => {
+          card.classList.remove('opacity-0', 'translate-y-10');
+          card.classList.add('opacity-100', 'translate-y-0');
+        }, 150 + index * 60);
+      });
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('copyright-year').textContent = `© ${new Date().getFullYear()} Murali. All Rights Reserved.`;
+
+      ['header', 'stats', 'controls'].forEach((id, i) => {
+        setTimeout(() => {
+          const el = document.getElementById(id);
+          el.classList.remove('opacity-0', 'translate-y-10');
+          el.classList.add('opacity-100', 'translate-y-0');
+        }, 100 + i * 120);
+      });
+
+      renderStats();
+      renderTagFilters();
+      renderProjects();
+
+      document.getElementById('search-input').addEventListener('input', (e) => {
+        search = e.target.value;
+        renderProjects();
+      });
+
+      if (window.lucide) lucide.createIcons();
+    });
   </script>
-  <script src="Bg.js"></script>
 </body>
 </html>
